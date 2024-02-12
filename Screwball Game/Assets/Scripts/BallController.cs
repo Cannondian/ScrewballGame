@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class BallController : MonoBehaviour
 {
-    public float speed = 5f;
+    public float speed = .01f;
     private Rigidbody rb;
 
     // Start is called before the first frame update
@@ -18,6 +18,7 @@ public class BallController : MonoBehaviour
     void Update()
     {
         // Movement
+        /*
         if (Input.GetAxis("Horizontal") > 0)
         {
             rb.AddForce(Vector3.right * speed);
@@ -34,6 +35,8 @@ public class BallController : MonoBehaviour
         {
             rb.AddForce(-Vector3.forward * speed);
         }
+        */
+        MovePlayerRelativeToCamera();
 
         // Reset Game
         if (Input.GetKeyDown(KeyCode.R))
@@ -41,5 +44,35 @@ public class BallController : MonoBehaviour
             //Restarts current level
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+    }
+
+    void MovePlayerRelativeToCamera()
+    {
+        // Get Player Input
+        float playerVerticalInput = Input.GetAxis("Vertical");
+        float playerHorizontalInput = Input.GetAxis("Horizontal");
+
+        // Get Camera Normalized Directional Vectors
+        Vector3 forward = Camera.main.transform.forward;
+        Vector3 right = Camera.main.transform.right;
+
+        // Inverse Transform
+        //Vector3 forward = transform.InverseTransformVector(Camera.main.transform.forward);
+        //Vector3 right = transform.InverseTransformVector(Camera.main.transform.right);
+
+        forward.y = 0;
+        right.y = 0;
+        forward = forward.normalized;
+        right = right.normalized;
+
+        // Create direction-relative-input vectors
+        Vector3 forwardRelativeVerticalInput = playerVerticalInput * forward;
+        Vector3 rightRelativeVerticalInput = playerHorizontalInput * right;
+
+        // Create and apply camera relative movement
+        Vector3 cameraRelativeMovement = forwardRelativeVerticalInput + rightRelativeVerticalInput;
+        this.transform.Translate(cameraRelativeMovement, Space.World);
+
+        // Its a transform issue, remember to use rigidbody for movement instead
     }
 }
