@@ -18,7 +18,6 @@ public class BallController : MonoBehaviour
     void Update()
     {
         // Movement
-        /*
         if (Input.GetAxis("Horizontal") > 0)
         {
             rb.AddForce(Vector3.right * speed);
@@ -35,8 +34,7 @@ public class BallController : MonoBehaviour
         {
             rb.AddForce(-Vector3.forward * speed);
         }
-        */
-        MovePlayerRelativeToCamera();
+        //MovePlayerRelativeToCamera();
 
         // Reset Game
         if (Input.GetKeyDown(KeyCode.R))
@@ -72,7 +70,9 @@ public class BallController : MonoBehaviour
         // Create and apply camera relative movement
         Vector3 cameraRelativeMovement = forwardRelativeVerticalInput + rightRelativeVerticalInput;
         this.transform.Translate(cameraRelativeMovement, Space.World);
+        //Vector3.Dot(cameraRelativeMovement, Space.World);
 
+        //rb.AddForce(cameraRelativeMovement);
         // Its a transform issue, remember to use rigidbody for movement instead
     }
 }
