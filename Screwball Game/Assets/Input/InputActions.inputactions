@@ -47,17 +47,6 @@
                 },
                 {
                     "name": "",
-                    "id": "910cd2f5-7026-4162-8499-72ce0b6872a3",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "c89bf9fa-e164-4548-a1a8-c642e71ec6ce",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
