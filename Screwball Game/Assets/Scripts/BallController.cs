@@ -7,6 +7,7 @@ public class BallController : MonoBehaviour
 {
     public float speed = .01f;
     private Rigidbody rb;
+    public int objectsCollected = 0;
 
     // Start is called before the first frame update
     void Start()
