@@ -25,7 +25,7 @@ public class CameraManager : MonoBehaviour
     public void OnLook(InputAction.CallbackContext context)
     {
         _delta = context.ReadValue<Vector2>();
-        //Debug.Log(_delta);
+        Debug.Log(_delta);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -38,6 +38,7 @@ public class CameraManager : MonoBehaviour
     public void OnRotate(InputAction.CallbackContext context)
     {
         if (_isBusy) return;
+        Debug.Log(_isBusy);
         _isRotating = context.started || context.performed;
 
         if (context.canceled)
