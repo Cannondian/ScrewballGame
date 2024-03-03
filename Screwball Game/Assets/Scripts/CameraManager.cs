@@ -25,7 +25,7 @@ public class CameraManager : MonoBehaviour
     public void OnLook(InputAction.CallbackContext context)
     {
         _delta = context.ReadValue<Vector2>();
-        Debug.Log(_delta);
+        //Debug.Log(_delta);
     }
 
     public void OnMove(InputAction.CallbackContext context)
